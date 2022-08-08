@@ -39,12 +39,22 @@ public class FreddyArrayList {
     // adds an int to the array[i] position. If value on position is 0, it will overwrite value and add one to the elements and afterwards break out the loop.
     public void addInt(int value) {
         for (int i = 0; i < freddyArrayList.length; i++) {
-            if (get(i) == 0) {
+             if (isArrayFull()){
+                 increaseArray();
+                 System.out.println("Array is full");
+                 break;
+            }
+            else if (get(i) == 0) {
                 this.freddyArrayList[this.elementsInFreddyArray] = value;
                 this.elementsInFreddyArray++;
                 break;
             }
+
         }
+    }
+
+    private void increaseArray() {
+
     }
 
     // takes the index from the for loop and assigns value with it's value. It returns the value where get is called.
@@ -65,6 +75,16 @@ public class FreddyArrayList {
         System.out.println(test.size());
         System.out.println(Arrays.toString(test.arraySize()));
         test.addInt(39);
+        test.addInt(22);
+        test.addInt(11);
+        test.addInt(11);
+        test.addInt(11);
+        test.addInt(11);
+        test.addInt(11);
+        test.addInt(11);
+        test.addInt(11);
+        test.addInt(11);
+        test.addInt(11);
         System.out.println(Arrays.toString(test.arraySize()));
     }
 }
