@@ -6,38 +6,24 @@ public class FreddyArrayList {
     // Object[] stores the objects in an array. In this case we use int.
     private int[] freddyArrayList;
     private int elementsInFreddyArray;
-    private static final int DEFAULT_CAPACITY = 2;
     int tempPosition = -1;
 
-    public FreddyArrayList() {
-        this(DEFAULT_CAPACITY);
-    }
 
-    // Only if i is greater than 0, can below Contructor be initialized with i as the size and elements = 0.
+
+    // Only if I is greater than 0, can below Contructor be initialized with i as the size and elements = 0.
     //
-    public FreddyArrayList(int i) {
-        if (i <= 0) {
-            System.out.println("Size cannot be less than 0");
-        } else {
-            this.freddyArrayList = new int[i];
+    public FreddyArrayList() {
+            this.freddyArrayList = new int[2];
             this.elementsInFreddyArray = 0;
         }
-    }
 
     //checks if array length matches elements in array.
     private boolean isArrayFull() {
-
-        if (this.elementsInFreddyArray == this.freddyArrayList.length) {
-            return true;
-        } else return false;
+        return this.elementsInFreddyArray == this.freddyArrayList.length;
     }
 
     public int size() {
         return this.elementsInFreddyArray;
-    }
-
-    public int[] array() {
-        return this.freddyArrayList;
     }
 
     // adds an int to the array[i] position. If value on position is 0, it will overwrite value and add one to the elements and afterwards break out the loop.
@@ -61,7 +47,6 @@ public class FreddyArrayList {
         for (int i = 0; i < freddyArrayList.length; i++) {
             newFreddyArray[i] = freddyArrayList[i];
         }
-
         freddyArrayList = newFreddyArray;
     }
 
@@ -90,8 +75,7 @@ public class FreddyArrayList {
     public static void main(String[] args) {
 
         FreddyArrayList test = new FreddyArrayList();
-        System.out.println(test.size());
-        System.out.println(Arrays.toString(test.array()));
+        System.out.println(Arrays.toString(test.freddyArrayList));
         test.addInt(39);
         test.addInt(22);
         test.addInt(11);
@@ -99,6 +83,6 @@ public class FreddyArrayList {
         test.addInt(35);
         test.addInt(34);
         test.addInt(23);
-        System.out.println(Arrays.toString(test.array()));
+        System.out.println(Arrays.toString(test.freddyArrayList));
     }
 }
