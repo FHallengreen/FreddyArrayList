@@ -6,7 +6,7 @@ public class FreddyArrayList {
     // Object[] stores the objects in an array. In this case we use int.
     private int[] freddyArrayList;
     private int elementsInFreddyArray;
-    private static final int DEFAULT_CAPACITY = 10;
+    private static final int DEFAULT_CAPACITY = 2;
 
     public FreddyArrayList() {
         this(DEFAULT_CAPACITY);
@@ -32,30 +32,33 @@ public class FreddyArrayList {
         return this.elementsInFreddyArray;
     }
 
-    public int[] arraySize() {
+    public int[] array() {
         return this.freddyArrayList;
     }
 
     // adds an int to the array[i] position. If value on position is 0, it will overwrite value and add one to the elements and afterwards break out the loop.
     public void addInt(int value) {
-        for (int i = 0; i < freddyArrayList.length; i++) {
              if (isArrayFull()){
                  increaseArray();
-                 System.out.println("Array is full");
-                 break;
+                 System.out.println("Array is full, cannot add entered value: " + value);
             }
-            else if (get(i) == 0) {
                 this.freddyArrayList[this.elementsInFreddyArray] = value;
                 this.elementsInFreddyArray++;
-                break;
-            }
-
-        }
     }
 
+    // TODO: increase array size.
     private void increaseArray() {
+        int [] newFreddyArray = new int [freddyArrayList.length * 2];
 
+        for (int i = 0; i < freddyArrayList.length; i++) {
+            newFreddyArray[i] = freddyArrayList[i];
+        }
+
+        freddyArrayList = newFreddyArray;
     }
+
+    // TODO: remove element from the array.
+
 
     // takes the index from the for loop and assigns value with it's value. It returns the value where get is called.
     public int get(int index) {
@@ -73,18 +76,10 @@ public class FreddyArrayList {
 
         FreddyArrayList test = new FreddyArrayList();
         System.out.println(test.size());
-        System.out.println(Arrays.toString(test.arraySize()));
+        System.out.println(Arrays.toString(test.array()));
         test.addInt(39);
         test.addInt(22);
         test.addInt(11);
-        test.addInt(11);
-        test.addInt(11);
-        test.addInt(11);
-        test.addInt(11);
-        test.addInt(11);
-        test.addInt(11);
-        test.addInt(11);
-        test.addInt(11);
-        System.out.println(Arrays.toString(test.arraySize()));
+        System.out.println(Arrays.toString(test.array()));
     }
 }
