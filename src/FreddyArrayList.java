@@ -8,14 +8,12 @@ public class FreddyArrayList {
     private int elementsInFreddyArray;
     int tempPosition = -1;
 
-
-
     // Only if I is greater than 0, can below Contructor be initialized with i as the size and elements = 0.
     //
     public FreddyArrayList() {
-            this.freddyArrayList = new int[2];
-            this.elementsInFreddyArray = 0;
-        }
+        this.freddyArrayList = new int[2];
+        this.elementsInFreddyArray = 0;
+    }
 
     //checks if array length matches elements in array.
     private boolean isArrayFull() {
