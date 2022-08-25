@@ -1,17 +1,18 @@
 import java.util.Arrays;
 
-public class FreddyArrayList {
+public class FreddyArrayList<T> {
+    private T t;
 
     // Class Object is the root of the class hierarchy. Every class has Object as a superclass. All objects, including arrays, implement the methods of this class.
     // Object[] stores the objects in an array. In this case we use int.
-    private int[] freddyArrayList;
+    private T[] freddyArrayList;
     private int elementsInFreddyArray;
-    int tempPosition = -1;
+    T tempPosition = null;
 
     // Only if I is greater than 0, can below Contructor be initialized with i as the size and elements = 0.
     //
     public FreddyArrayList() {
-        this.freddyArrayList = new int[2];
+        this.freddyArrayList = new T[];
         this.elementsInFreddyArray = 0;
     }
 
@@ -25,14 +26,14 @@ public class FreddyArrayList {
     }
 
     // adds an int to the array[i] position. If value on position is 0, it will overwrite value and add one to the elements and afterwards break out the loop.
-    public void addInt(int value) {
+    public void addInt(T value) {
         if (isArrayFull()) {
             increaseArray();
         }
-        if (tempPosition != -1) {
+        if (tempPosition != null) {
             this.freddyArrayList[tempPosition] = value;
             this.elementsInFreddyArray++;
-            tempPosition = -1;
+            tempPosition = null;
         } else {
             this.freddyArrayList[this.elementsInFreddyArray] = value;
             this.elementsInFreddyArray++;
@@ -40,7 +41,7 @@ public class FreddyArrayList {
     }
 
     private void increaseArray() {
-        int[] newFreddyArray = new int[freddyArrayList.length * 2];
+        T[] newFreddyArray = new T[freddyArrayList.length * 2];
 
         for (int i = 0; i < freddyArrayList.length; i++) {
             newFreddyArray[i] = freddyArrayList[i];
@@ -48,19 +49,27 @@ public class FreddyArrayList {
         freddyArrayList = newFreddyArray;
     }
 
-    public void removeFromArray(int value) {
+    public void removeFromArray(T value) {
         for (int i = 0; i < freddyArrayList.length; i++) {
             if (value == freddyArrayList[i]) {
-                freddyArrayList[i] = 0;
+                freddyArrayList[i] = null;
                 tempPosition = freddyArrayList[get(i)];
                 this.elementsInFreddyArray--;
             }
         }
     }
 
+    public FreddyArrayList(T t) {
+        this.t = t;
+    }
+
+    public T getT() {
+        return t;
+    }
+
     // takes the index from the for loop and assigns value with it's value. It returns the value where get is called.
-    public int get(int index) {
-        int value = 0;
+    public T get(T index) {
+        T value = null;
         try {
             value = this.freddyArrayList[index];
         } catch (ArrayIndexOutOfBoundsException e) {
@@ -76,7 +85,7 @@ public class FreddyArrayList {
         System.out.println(Arrays.toString(test.freddyArrayList));
         test.addInt(39);
         test.addInt(22);
-        test.addInt(11);
+        test.addInt("Hej");
         test.removeFromArray(39);
         test.addInt(35);
         test.addInt(34);
