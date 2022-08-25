@@ -81,7 +81,7 @@ public class FreddyArrayList<T> {
 
     public static void main(String[] args) {
 
-        FreddyArrayList test = new FreddyArrayList();
+        FreddyArrayList<Object> test = new FreddyArrayList<>();
         System.out.println(Arrays.toString(test.freddyArrayList));
         test.addInt(39);
         test.addInt(22);
