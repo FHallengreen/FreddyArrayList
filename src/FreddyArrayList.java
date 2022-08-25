@@ -8,7 +8,6 @@ public class FreddyArrayList<T> {
     // Object[] stores the objects in an array. In this case we use int.
     private Object[] freddyArrayList;
     private int elementsInFreddyArray;
-    T tempPosition = null;
 
     // Only if I is greater than 0, can below Contructor be initialized with i as the size and elements = 0.
     //
@@ -54,19 +53,11 @@ public class FreddyArrayList<T> {
         for (int i = 0; i < freddyArrayList.length; i++) {
             if (value == freddyArrayList[i]) {
                 freddyArrayList[i] = null;
-//                tempPosition = (T) freddyArrayList[i];
                 this.elementsInFreddyArray--;
             }
         }
     }
 
-    public FreddyArrayList(T t) {
-        this.t = t;
-    }
-
-    public T getT() {
-        return t;
-    }
 
     // takes the index from the for loop and assigns value with it's value. It returns the value where get is called.
     public Object get(int index) {
@@ -80,10 +71,6 @@ public class FreddyArrayList<T> {
         return value;
     }
 
- /*   public E get(int index) {
-        Objects.checkIndex(index, size);
-        return elementData(index);
-    }*/
 
     public static void main(String[] args) {
 
