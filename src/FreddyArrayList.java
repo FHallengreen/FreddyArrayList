@@ -1,18 +1,18 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 
 public class FreddyArrayList<T> {
-    private T t;
 
     // Class Object is the root of the class hierarchy. Every class has Object as a superclass. All objects, including arrays, implement the methods of this class.
     // Object[] stores the objects in an array. In this case we use int.
-    private Object[] freddyArrayList;
+    private T[] freddyArrayList;
     private int elementsInFreddyArray;
 
     // Only if I is greater than 0, can below Contructor be initialized with i as the size and elements = 0.
     //
     public FreddyArrayList(int initialCapacity) {
-        this.freddyArrayList = new Object[initialCapacity];
+        this.freddyArrayList = (T[]) new Object[initialCapacity];
         this.elementsInFreddyArray = 0;
     }
 
@@ -30,14 +30,14 @@ public class FreddyArrayList<T> {
         if (isArrayFull()) {
             increaseArray();
         }
-       /* if (tempPosition != null) {
-            this.freddyArrayList[] = value;
-            this.elementsInFreddyArray++;
-            tempPosition = null;
-        } else {*/
-            this.freddyArrayList[this.elementsInFreddyArray] = value;
-            this.elementsInFreddyArray++;
+        this.freddyArrayList[this.elementsInFreddyArray] = (T) value;
+        this.elementsInFreddyArray++;
 
+        for (int i = 0; i < freddyArrayList.length; i++) {
+            if (freddyArrayList[i] == null) {
+                removeFromArray(freddyArrayList[i]);
+            }
+        }
     }
 
     private void increaseArray() {
@@ -46,7 +46,7 @@ public class FreddyArrayList<T> {
         for (int i = 0; i < freddyArrayList.length; i++) {
             newFreddyArray[i] = freddyArrayList[i];
         }
-        freddyArrayList = newFreddyArray;
+        freddyArrayList = (T[]) newFreddyArray;
     }
 
     public void removeFromArray(Object value) {
@@ -76,13 +76,10 @@ public class FreddyArrayList<T> {
 
         FreddyArrayList<Object> test = new FreddyArrayList<>(5);
         System.out.println(Arrays.toString(test.freddyArrayList));
-        test.addInt(39);
-        test.addInt("goddag");
-        test.addInt("Hej");
-        test.removeFromArray(39);
-        test.addInt(35);
-        test.addInt(34);
-        test.addInt(23);
+
+        Car car = new Car(2022, "Ford");
+        test.addInt(car);
+        System.out.println(test.get(0));
         System.out.println(Arrays.toString(test.freddyArrayList));
     }
 }
