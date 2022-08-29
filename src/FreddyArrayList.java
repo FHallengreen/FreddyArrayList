@@ -34,12 +34,12 @@ public class FreddyArrayList<T> {
     }
 
     private void increaseArray() {
-        Object[] newFreddyArray = new Object[freddyArrayList.length * 2];
+        T[] newFreddyArray = (T[]) new Object[freddyArrayList.length * 2];
 
         for (int i = 0; i < freddyArrayList.length; i++) {
             newFreddyArray[i] = freddyArrayList[i];
         }
-        freddyArrayList = (T[]) newFreddyArray;
+        freddyArrayList = newFreddyArray;
     }
 
     public void remove(int value) {
@@ -50,8 +50,8 @@ public class FreddyArrayList<T> {
 
 
     // takes the index from the for loop and assigns value with it's value. It returns the value where get is called.
-    public Object get(int index) {
-        Object value = null;
+    public T get(int index) {
+        T value = null;
         try {
             value = this.freddyArrayList[index];
         } catch (ArrayIndexOutOfBoundsException e) {
@@ -64,7 +64,7 @@ public class FreddyArrayList<T> {
 
     public static void main(String[] args) {
 
-        FreddyArrayList<Object> test = new FreddyArrayList<>(5);
+        FreddyArrayList<Car> test = new FreddyArrayList<>(5);
         System.out.println(Arrays.toString(test.freddyArrayList));
 
         Car car = new Car("Ford");
