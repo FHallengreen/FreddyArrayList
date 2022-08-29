@@ -1,6 +1,4 @@
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Objects;
 
 public class FreddyArrayList<T> {
 
@@ -26,18 +24,13 @@ public class FreddyArrayList<T> {
     }
 
     // adds an int to the array[i] position. If value on position is 0, it will overwrite value and add one to the elements and afterwards break out the loop.
-    public void addInt(Object value) {
+    public void add(T value) {
         if (isArrayFull()) {
             increaseArray();
         }
-        this.freddyArrayList[this.elementsInFreddyArray] = (T) value;
+        this.freddyArrayList[this.elementsInFreddyArray] = value;
         this.elementsInFreddyArray++;
 
-        for (int i = 0; i < freddyArrayList.length; i++) {
-            if (freddyArrayList[i] == null) {
-                removeFromArray(freddyArrayList[i]);
-            }
-        }
     }
 
     private void increaseArray() {
@@ -49,12 +42,9 @@ public class FreddyArrayList<T> {
         freddyArrayList = (T[]) newFreddyArray;
     }
 
-    public void removeFromArray(Object value) {
-        for (int i = 0; i < freddyArrayList.length; i++) {
-            if (value == freddyArrayList[i]) {
-                freddyArrayList[i] = null;
-                this.elementsInFreddyArray--;
-            }
+    public void remove(int value) {
+        for (int i = value; i < freddyArrayList.length -1; i++) {
+            freddyArrayList[i] = freddyArrayList[i + 1];
         }
     }
 
@@ -77,9 +67,15 @@ public class FreddyArrayList<T> {
         FreddyArrayList<Object> test = new FreddyArrayList<>(5);
         System.out.println(Arrays.toString(test.freddyArrayList));
 
-        Car car = new Car(2022, "Ford");
-        test.addInt(car);
-        System.out.println(test.get(0));
+        Car car = new Car("Ford");
+        Car car2 = new Car("Tesla");
+        Car car3 = new Car("Mazda");
+        test.add(car);
+        test.add(car2);
+        test.add(car);
+        test.add(car3);
+        System.out.println(test.get(1));
+        test.remove(1);
         System.out.println(Arrays.toString(test.freddyArrayList));
     }
 }
